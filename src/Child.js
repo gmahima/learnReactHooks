@@ -1,22 +1,16 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class Child extends Component {
-  state = {
-    value: 1
+const Child = () => {
+  const [value, setValue] = useState(0);
+
+  const handleIncrement = () => {
+    setValue(value + 1);
   };
-  handleIncrement = () => {
-    this.setState(prevState => ({
-      // Note this paren! It is essential.
-      value: prevState.value + 1 // Note lack of mutation!
-    }));
-  };
-  render() {
-    return (
-      <div>
-        <h1>{this.state.value}</h1>
-        <button onClick={this.handleIncrement}>Increment</button>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <h1>{value}</h1>
+      <button onClick={handleIncrement}>Increment</button>
+    </div>
+  );
+};
 export default Child;
