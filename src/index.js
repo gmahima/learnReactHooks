@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Child from "./Child";
+import ReadMore from "./Child";
 
 import "./styles.css";
 
 function App() {
-  return <Child printThis="konnichiwa!!" />;
+  return <ReadMore />;
 }
 
 const rootElement = document.getElementById("root");
