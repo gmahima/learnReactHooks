@@ -1,22 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const Child = () => {
   const [value, setValue] = useState(0);
-  const [boolVal, setBoolVal] = useState(false);
 
-  const handleIncrement = () => {
+  const handler = () => {
     setValue(value + 1);
   };
-  const toggleBoolVal = () => {
-    setBoolVal(!boolVal);
+  const handlerRef = useRef(handler);
+  useEffect(() => {
+    handlerRef.current = handler;
+  }, [handler]);
+  const handle = event => {
+    handlerRef.current(event);
   };
   useEffect(() => console.log(value), [value]);
-  useEffect(() => console.log(boolVal), [boolVal]);
+  useEffect(() => {
+    window.addEventListener("click", handle);
+    return () => {
+      window.removeEventListener("click", handle);
+    };
+  }, []);
   return [
-    <h1>{value}</h1>,
-    <button onClick={handleIncrement}>Increment</button>,
-    <h1>{String(boolVal)}</h1>,
-    <button onClick={toggleBoolVal}>Toggle</button>
+    <h1>{value}</h1>
+    //<button onClick={handleIncrement}>Increment</button>
   ];
 };
 export default Child;

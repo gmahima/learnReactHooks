@@ -5,7 +5,7 @@ import Child from "./Child";
 import "./styles.css";
 
 function App() {
-  return <Child />;
+  return [<Child />];
 }
 
 const rootElement = document.getElementById("root");
