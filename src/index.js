@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import ReadMore from "./Child";
+import Child from "./Child";
 
 import "./styles.css";
 
 function App() {
-  return <ReadMore />;
+  return <Child />;
 }
 
 const rootElement = document.getElementById("root");

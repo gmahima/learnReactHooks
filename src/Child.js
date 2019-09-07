@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Child = () => {
   const [value, setValue] = useState(0);
@@ -10,6 +10,8 @@ const Child = () => {
   const toggleBoolVal = () => {
     setBoolVal(!boolVal);
   };
+  useEffect(() => console.log(value), [value]);
+  useEffect(() => console.log(boolVal), [boolVal]);
   return [
     <h1>{value}</h1>,
     <button onClick={handleIncrement}>Increment</button>,
