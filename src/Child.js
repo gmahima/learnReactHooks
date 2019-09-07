@@ -1,22 +1,20 @@
 import React, { useState } from "react";
 
-const Child = ({ children = "hahaha", maxCharCount = 20 }) => {
-  const [isTruncated, setIsTruncated] = useState(true);
-  const text = children;
-  const resString = isTruncated ? text.slice(0, maxCharCount) : text;
-  const toggleIsTruncated = () => setIsTruncated(!isTruncated);
+const Child = () => {
+  const [value, setValue] = useState(0);
+  const [boolVal, setBoolVal] = useState(false);
+
+  const handleIncrement = () => {
+    setValue(value + 1);
+  };
+  const toggleBoolVal = () => {
+    setBoolVal(!boolVal);
+  };
   return [
-    <p>{resString}</p>,
-    <button onClick={toggleIsTruncated}>
-      {isTruncated ? "Read more" : "Read less"}
-    </button>
+    <h1>{value}</h1>,
+    <button onClick={handleIncrement}>Increment</button>,
+    <h1>{String(boolVal)}</h1>,
+    <button onClick={toggleBoolVal}>Toggle</button>
   ];
 };
-const ReadMore = () => {
-  return (
-    <Child>
-      whatever something blah blahblahblahblahblahblahblahblahblahblahblah"
-    </Child>
-  );
-};
-export default ReadMore;
+export default Child;
